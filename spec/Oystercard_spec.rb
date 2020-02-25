@@ -11,8 +11,13 @@ describe Oystercard do
   end
 
   it 'top_up method rasies error if it will bring balance above £90' do
-    oystercard.top_up(Oystercard::DEFAULT_LIMIT)
-    expect { oystercard.top_up(1) }.to raise_error "Balance cannot exceed #{Oystercard::DEFAULT_LIMIT}"
+    oystercard.top_up(Oystercard::MAXIMUM_BALANCE)
+    expect { oystercard.top_up(1) }.to raise_error "Balance cannot exceed #{Oystercard::MAXIMUM_BALANCE}"
+  end
+
+  it 'deduct method raises error if balanace drops below £0.' do 
+    oystercard.deduct(Oystercard::MINIMUM_BALANCE)
+      expect { oystercard.deduct(1) }.to raise_error "Balance can't be less than #{Oystercard::MINIMUM_BALANCE}"
   end
 
   it 'deducts money from balance' do
@@ -35,6 +40,5 @@ describe Oystercard do
     expect(subject).not_to be_in_journey
   end
 
-
-
+  
 end
