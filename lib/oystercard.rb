@@ -23,6 +23,7 @@ MINIMUM_BALANCE = 0
 
   def touch_in
     # fail "Currently in journey" if @in_journey?
+    fail "Insufficient balance to touch in" if balance <= 1
     @in_use = true
   end
 
