@@ -18,12 +18,10 @@ MINIMUM_CHARGE = 3
   end
 
   def touch_in
-<<<<<<< HEAD
     # fail "Currently in journey" if @in_journey?
     fail "Insufficient balance to touch in" if balance <= 1
-=======
+
     raise "Insufficient balance to touch in" if @balance < MINIMUM_BALANCE
->>>>>>> 53c16ebe8840339f482644921ade27f0a0e135f8
     @in_use = true
   end
 
