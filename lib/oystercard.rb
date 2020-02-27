@@ -3,8 +3,8 @@ class Oystercard
 MAXIMUM_BALANCE = 90
 MINIMUM_BALANCE = 1
 MINIMUM_CHARGE = 3
-  def initialize(balance = 0)
-    @balance = balance # Balance is 0
+  def initialize
+    @balance = 0
     @in_use = false
   end
 
@@ -19,7 +19,7 @@ MINIMUM_CHARGE = 3
 
   def touch_in
     # fail "Currently in journey" if @in_journey?
-    fail "Insufficient balance to touch in" if balance <= 1
+    fail "Insufficient balance to touch in" if @balance <= 1
 
     raise "Insufficient balance to touch in" if @balance < MINIMUM_BALANCE
     @in_use = true
@@ -30,8 +30,6 @@ MINIMUM_CHARGE = 3
     @in_use = false
   end
 end
-
-private
 
 def deduct(amount)
   @balance -= amount

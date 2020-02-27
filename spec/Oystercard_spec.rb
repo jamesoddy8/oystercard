@@ -20,7 +20,7 @@ describe Oystercard do
 
 
   it 'deduct method raises error if balanace drops below £0.' do
-    oystercard.deduct(Oystercard::MINIMUM_BALANCE)
+      oystercard.deduct(Oystercard::MINIMUM_BALANCE)
       expect { oystercard.deduct(1) }.to raise_error "Balance can't be less than #{Oystercard::MINIMUM_BALANCE}"
   end
 
@@ -28,9 +28,9 @@ describe Oystercard do
   #   oystercard.top_up(10)
   #   expect(oystercard.deduct(5)).to eq(5)
   # end
-  describe "#deduct" do
-      it { is_expected.to respond_to(:deduct).with(1).argument }
-    end
+  # describe "#deduct" do
+  #     it { is_expected.to respond_to(:deduct).with(1).argument }
+  #   end
 
   # it 'deducts money from balance' do
   #   subject.top_up(10)
@@ -48,6 +48,7 @@ describe Oystercard do
   end
 
   it 'will not touch in if below minimum balance' do
+    subject.top_up(Oystercard::MINIMUM_BALANCE)
     expect{ subject.touch_in }.to raise_error "Insufficient balance to touch in"
   end
 
